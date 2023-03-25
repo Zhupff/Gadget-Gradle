@@ -1,0 +1,24 @@
+project.buildscript {
+    ext.GadgetScript = GadgetScript
+}
+
+final class GadgetScript {
+
+    static void compose(String version, @DelegatesTo(GadgetScriptDelegate.class) Closure closure) {
+        closure.delegate = new GadgetScriptDelegate(version, closure.owner)
+        closure()
+    }
+
+    private final static class GadgetScriptDelegate {
+        @Delegate Project project
+        GadgetScriptDelegate(version, script) {
+            this.project = script.project
+            println("${getClass().name} compose in ${this.project.name}")
+            this.project.buildscript {
+                dependencies {
+                    classpath("com.github.Zhupff:Gadget-Gradle:$version")
+                }
+            }
+        }
+    }
+}
