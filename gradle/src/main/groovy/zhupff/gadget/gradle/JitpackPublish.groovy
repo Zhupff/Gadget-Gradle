@@ -10,14 +10,14 @@ class JitpackPublish implements Plugin< Project> {
 
     @Override
     void apply(Project project) {
-        println("${project.name} apply ${getClass().simpleName}")
+        println("${project.name} apply JitpackPublish")
         this.project = project
+        publishToJitpack()
     }
 
     private void publishToJitpack() {
-        apply plugin: "maven-publish"
-
         if (System.getenv("JITPACK") == "true") {
+            apply plugin: "maven-publish"
             afterEvaluate {
                 project.publishing {
                     repositories {
