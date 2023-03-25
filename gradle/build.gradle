@@ -1,0 +1,24 @@
+plugins {
+    id "groovy"
+    id "maven-publish"
+}
+
+dependencies {
+    compileOnly gradleApi()
+}
+
+if (System.getenv("JITPACK") == "true") {
+    afterEvaluate {
+        publishing {
+            repositories {
+                it.mavenLocal()
+            }
+            publications {
+                jitpack(MavenPublication) {
+                    from components.java
+                    artifactId = project.name
+                }
+            }
+        }
+    }
+}
