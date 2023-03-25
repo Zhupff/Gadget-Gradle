@@ -22,7 +22,7 @@ final class GadgetScript {
         @Delegate Project project
         GadgetScriptDelegate(version, script) {
             this.project = script.project
-            println("${GadgetScript.class.simpleName} compose in ${this.project.name}")
+            println("GadgetScript compose in ${this.project.name}")
             this.project.buildscript {
                 dependencies {
                     classpath("com.github.Zhupff:Gadget-Gradle:$version")
