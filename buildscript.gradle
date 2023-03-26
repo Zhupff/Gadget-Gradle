@@ -50,6 +50,7 @@ final class GadgetScript {
     private static String GADGET_GRADLE_VERSION = ""
 
     static void dependsGadgetGradle(Project project) {
+        println("${project.name} dependsGadgetGradle $GADGET_GRADLE_VERSION")
         project.dependencies {
             compileOnly "com.github.Zhupff:Gadget-Gradle:$GADGET_GRADLE_VERSION"
         }
