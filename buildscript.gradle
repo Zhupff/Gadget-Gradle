@@ -47,13 +47,24 @@ project.subprojects {
 
 final class GadgetScript {
 
+    private static String GADGET_GRADLE_VERSION = ""
+
+    static void dependsGadgetGradle(Project project) {
+        project.dependencies {
+            compileOnly "com.github.Zhupff:Gadget-Gradle:$GADGET_GRADLE_VERSION"
+        }
+    }
+
     static void compose(String version, @DelegatesTo(GadgetScriptDelegate.class) Closure closure) {
-        closure.delegate = new GadgetScriptDelegate(version, closure.owner)
+        GADGET_GRADLE_VERSION = version
+        closure.delegate = new GadgetScriptDelegate(GADGET_GRADLE_VERSION, closure.owner)
         closure()
     }
 
     private final static class GadgetScriptDelegate {
+
         @Delegate Project project
+
         GadgetScriptDelegate(version, script) {
             this.project = script.project
             println("GadgetScript compose in ${this.project.name}")
