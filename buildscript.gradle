@@ -1,6 +1,8 @@
 project.buildscript {
     repositories {
         maven { url "https://jitpack.io" }
+        google()
+        mavenCentral()
     }
     ext.GadgetScript = GadgetScript
     ext.GadgetVer = [
@@ -42,6 +44,8 @@ project.buildscript {
 project.subprojects {
     repositories {
         maven { url "https://jitpack.io" }
+        google()
+        mavenCentral()
     }
 }
 
