@@ -66,27 +66,27 @@ final class GadgetScript {
             this.project = script.project
             println("GadgetScript compose in ${this.project.name}")
             this.project.buildscript {
-                ext.GADGET_GRADLE_VERSION = version
+                rootProject.ext.GADGET_GRADLE_VERSION = version
                 dependencies {
-                    classpath("com.github.Zhupff:Gadget-Gradle:${ext.GADGET_GRADLE_VERSION}")
+                    classpath("com.github.Zhupff:Gadget-Gradle:${rootProject.ext.GADGET_GRADLE_VERSION}")
                 }
             }
         }
 
         def GadgetWidget(version) {
-            this.project.buildscript {
-                ext.GADGET_WIDGET_VERSION = version
+            project.buildscript {
+                rootProject.ext.GADGET_WIDGET_VERSION = version
                 dependencies {
-                    classpath("com.github.Zhupff.Gadget-Widget:gradle:${ext.GADGET_WIDGET_VERSION}")
+                    classpath("com.github.Zhupff.Gadget-Widget:gradle:${rootProject.ext.GADGET_WIDGET_VERSION}")
                 }
             }
         }
 
         def GadgetTheme(version) {
-            this.project.buildscript {
-                ext.GADGET_THEME_VERSION = version
+            project.buildscript {
+                rootProject.ext.GADGET_THEME_VERSION = version
                 dependencies {
-                    classpath("com.github.Zhupff.Gadget-Theme:gradle:${ext.GADGET_THEME_VERSION}")
+                    classpath("com.github.Zhupff.Gadget-Theme:gradle:${rootProject.ext.GADGET_THEME_VERSION}")
                 }
             }
         }
